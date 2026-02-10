@@ -1,0 +1,6 @@
+{
+    "com.sm64coopdx.sm64coopdx": {
+        "appid-url-not-reachable": "Works using curl, works in the browser, doesn't work with flatpak-builder-lint",
+        "finish-args-has-dev-input": "Used for controller support. Giving All devices access seems overkill."
+    }
+}

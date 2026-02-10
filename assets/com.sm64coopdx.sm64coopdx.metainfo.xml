@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2026 Coop Deluxe -->
+<component type="desktop-application">
+  <id>com.sm64coopdx.sm64coopdx</id>
+  
+  <name>sm64coopdx</name>
+  <summary>SM64 online co-op mod</summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  
+  <developer id="com.sm64coopdx">
+    <name>Coop Deluxe</name>
+    <url>https://github.com/coop-deluxe</url>
+  </developer>
+  
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>gamepad</control>
+  </supports>
+  
+  <description>
+    <p>
+      sm64coopdx is an online multiplayer project for the Super Mario 64 PC port that supports widescreen, uncapped FPS, and has many toggleable options for customization to fit your desired experience. It has multiplayer up to 16 players and an ever growing powerful Lua modding API that allow modders and players to enjoy Super Mario 64 in more accessible and unique new ways!
+    </p>
+    <p>**Keep in mind that you need a valid SM64 ROM to be able to play this mod!** See the second screenshot.</p>
+    <p>
+      Built-in Mods (toggleable):
+    </p>
+    <ul>
+      <li>Arena</li>
+      <li>Character Select</li>
+      <li>Cheat</li>
+      <li>Day Night Cycle DX</li>
+      <li>Faster Swimming</li>
+      <li>Hide and Seek</li>
+      <li>Personal Star Counter</li>
+      <li>Star Road</li>
+      <li>Super Mario 74</li>
+      <li>[CS] Extra Characters</li>
+      <li>[CS] The Originals</li>
+    </ul>
+    <p>Get more mods on the <a href="https://mods.sm64coopdx.com/">Mods Forum!</a></p>
+  </description>
+  
+  <screenshots>
+    <screenshot type="default">
+      <image>https://files.catbox.moe/19301e.png</image>
+      <caption>Home screen</caption>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://files.catbox.moe/uznd9j.png</image>
+      <caption>You need a SM64 ROM to play!</caption>
+    </screenshot>
+    <screenshot type="default">
+      <image>Character Select Mod!</image>
+      <caption>https://files.catbox.moe/2aa0gc.png</caption>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://files.catbox.moe/4oclru.png</image>
+      <caption>Mod Selection Screen</caption>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://files.catbox.moe/nlwods.png</image>
+      <caption>Triple Baka Pack Character Mod! <a href="https://mods.sm64coopdx.com/mods/cs-triple-baka-pack.418/">Get it here</a></caption>
+    </screenshot>
+  </screenshots>
+
+  <categories>
+    <category>Game</category>
+  </categories>
+
+  <keywords>
+    <!-- <keyword>sm64</keyword> -->
+  </keywords>
+  
+  <launchable type="desktop-id">com.sm64coopdx.sm64coopdx.desktop</launchable>
+  
+  <branding>
+    <color type="primary" scheme_preference="light">#ff8a8a</color>
+    <color type="primary" scheme_preference="dark">#3a0c0c</color>
+  </branding>
+
+  <content_rating type="oars-1.0">
+    <content_attribute id="social-chat">moderate</content_attribute>
+  </content_rating>
+
+  <!-- Disable some URLs until verification -->
+  <url type="bugtracker">https://github.com/coop-deluxe/sm64coopdx/issues</url>
+  <url type="homepage">https://sm64coopdx.com/</url>
+  <url type="contact">https://discord.gg/TJVKHS4</url>
+  <url type="faq">https://sm64coopdx.com/</url>
+  <url type="vcs-browser">https://github.com/coop-deluxe/sm64coopdx</url>
+
+  <requires>
+    <!-- ONLY desktop supported -->
+    <display_length compare="ge">768</display_length>
+  </requires>
+
+  <releases>
+    <release version="1.4.1" date="2026-01-01">
+      <url>https://github.com/coop-deluxe/sm64coopdx/releases/tag/v1.4.1</url>
+    </release>
+  </releases>
+</component>

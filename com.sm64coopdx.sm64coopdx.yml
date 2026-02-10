@@ -1,0 +1,49 @@
+# First written by Lopolin, then adapted some changes from https://github.com/kermeow/coop-flatpak (Notably Discord RPC)
+
+id: com.sm64coopdx.sm64coopdx
+runtime: org.freedesktop.Platform
+runtime-version: '25.08'
+sdk: org.freedesktop.Sdk
+command: sm64coopdx
+modules:
+  - name: sm64coopdx
+    buildsystem: simple
+    build-commands:
+      - mkdir /app/bin/
+      - mv * /app/bin/
+    sources:
+      - type: archive # change this to github download
+        url: https://github.com/coop-deluxe/sm64coopdx/releases/download/v1.4.1/sm64coopdx_Linux.zip
+        sha256: c63fda5237bc9b377c13f9aa9773cb593d726b8cc8bd498fc46b2ba943540d36
+        strip-components: 0 # Keep directory structure intact
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/coop-deluxe/sm64coopdx/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name=="sm64coopdx_Linux.zip") | .browser_download_url
+  - name: sm64misc
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 ${FLATPAK_ID}.desktop -t /app/share/applications
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 icon128.png /app/share/icons/hicolor/128x128/apps/${FLATPAK_ID}.png
+      - install -Dm644 icon256.png /app/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png
+      - install -Dm644 icon512.png /app/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+    sources:
+      - type: dir
+        path: assets
+finish-args:
+  - --device=dri
+  - --device=input
+  - --env=LD_LIBRARY_PATH=/app/bin
+  - --filesystem=xdg-download:ro # Since some File Managers don't support FileTransfer Portal. The last 0.4% of cases is not worth the trouble to give more permissions.
+  - --share=ipc # does this app or the mods use this?
+  - --share=network
+  - --socket=pulseaudio
+  - --socket=fallback-x11
+  - --socket=wayland
+  # Discord RPC
+  # - --filesystem=xdg-run/app/com.discordapp.Discord:create # Unsure if this is really needed, maybe when discord was closed before the game launched?
+  - --filesystem=xdg-run/discord-ipc-0
+  # Make flatpack-builder-lint happy
+  - --require-version=1.16.0
