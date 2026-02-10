@@ -18,6 +18,8 @@
     <control>pointing</control>
     <control>keyboard</control>
     <control>gamepad</control>
+    <!-- SteamOS -->
+    <!-- <control>touch</control> -->
   </supports>
   
   <description>
@@ -31,16 +33,13 @@
     </p>
     <ul>
       <li>Arena</li>
-      <li>Character Select</li>
-      <li>Cheat</li>
+      <li>Cheats</li>
       <li>Day Night Cycle DX</li>
       <li>Faster Swimming</li>
       <li>Hide and Seek</li>
       <li>Personal Star Counter</li>
       <li>Star Road</li>
       <li>Super Mario 74</li>
-      <li>[CS] Extra Characters</li>
-      <li>[CS] The Originals</li>
     </ul>
     <p>Get more mods on the <a href="https://mods.sm64coopdx.com/">Mods Forum!</a></p>
   </description>
@@ -73,7 +72,8 @@
   </categories>
 
   <keywords>
-    <!-- <keyword>sm64</keyword> -->
+    <keyword>sm64</keyword>
+    <keyword>Nintendo</keyword>
   </keywords>
   
   <launchable type="desktop-id">flatpak_id.desktop</launchable>
@@ -97,9 +97,14 @@
   <requires>
     <!-- ONLY desktop supported -->
     <display_length compare="ge">768</display_length>
+    <!-- SteamOS -->
+    <!-- <display_length compare="ge">360</display_length> -->
   </requires>
 
   <releases>
+    <release version="1.5" date="2026-05-28">
+      <url>https://github.com/coop-deluxe/sm64coopdx/releases/tag/v1.5</url>
+    </release>
     <release version="1.4.1" date="2026-01-01">
       <url>https://github.com/coop-deluxe/sm64coopdx/releases/tag/v1.4.1</url>
     </release>
