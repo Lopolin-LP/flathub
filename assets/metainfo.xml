@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2026 Coop Deluxe -->
 <component type="desktop-application">
-  <id>com.sm64coopdx.sm64coopdx</id>
+  <id>flatpak_id</id>
   
-  <name>sm64coopdx</name>
+  <name>flatpak_name</name>
   <summary>SM64 online co-op mod</summary>
   
   <metadata_license>CC0-1.0</metadata_license>
@@ -25,6 +25,7 @@
       sm64coopdx is an online multiplayer project for the Super Mario 64 PC port that supports widescreen, uncapped FPS, and has many toggleable options for customization to fit your desired experience. It has multiplayer up to 16 players and an ever growing powerful Lua modding API that allow modders and players to enjoy Super Mario 64 in more accessible and unique new ways!
     </p>
     <p>**Keep in mind that you need a valid SM64 ROM to be able to play this mod!** See the second screenshot.</p>
+    <!-- <p>The SteamOS version contains optimizations made for Handhelds.</p> -->
     <p>
       Built-in Mods (toggleable):
     </p>
@@ -75,7 +76,7 @@
     <!-- <keyword>sm64</keyword> -->
   </keywords>
   
-  <launchable type="desktop-id">com.sm64coopdx.sm64coopdx.desktop</launchable>
+  <launchable type="desktop-id">flatpak_id.desktop</launchable>
   
   <branding>
     <color type="primary" scheme_preference="light">#ff8a8a</color>

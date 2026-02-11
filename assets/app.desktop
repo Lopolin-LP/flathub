@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=sm64coopdx
+Name=flatpak_name
 Comment=SM64 online co-op mod
 Exec=sm64coopdx
 Type=Application
-Icon=com.sm64coopdx.sm64coopdx
+Icon=flatpak_id
 Categories=Game;
 

@@ -5,25 +5,52 @@ runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: sm64coopdx
+build-options:
+  env:
+    FLATPAK_NAME: sm64coopdx
 modules:
+  # Only some necessary, see https://gitlab.com/freedesktop-sdk/freedesktop-sdk/-/tree/master/elements/components for available components
+  - shared-modules/glew/glew.json
+  # - name: sm64coopdx
+  #   buildsystem: simple
+  #   build-commands:
+  #     - mkdir /app/bin/
+  #     - mv * /app/bin/
+  #   sources:
+  #     - type: archive # change this to github download
+  #       url: https://github.com/coop-deluxe/sm64coopdx/releases/download/v1.4.1/sm64coopdx_Linux.zip
+  #       sha256: c63fda5237bc9b377c13f9aa9773cb593d726b8cc8bd498fc46b2ba943540d36
+  #       strip-components: 0 # Keep directory structure intact
+  #       x-checker-data:
+  #         type: json
+  #         url: https://api.github.com/repos/coop-deluxe/sm64coopdx/releases/latest
+  #         version-query: .tag_name
+  #         url-query: .assets[] | select(.name=="sm64coopdx_Linux.zip") | .browser_download_url
   - name: sm64coopdx
     buildsystem: simple
     build-commands:
-      - mkdir /app/bin/
-      - mv * /app/bin/
+      - git switch --detach 6092488d1c4fc741b16a0789ef9c08ec0279333f
+      - make -j$(nproc) # Desktop Version
+      # - make -j$(nproc) HANDHELD=1 # SteamOS Version
+      - |
+        cd ./build/*_pc/
+        find dynos lang mods palettes -type f -exec install -Dm644 "{}" "/app/bin/{}" \; # https://unix.stackexchange.com/a/405329
+        install -Dm755 ./sm64coopdx -t /app/bin
+        install -Dm644 ./libdiscord_game_sdk.so -t /app/lib
     sources:
-      - type: archive # change this to github download
-        url: https://github.com/coop-deluxe/sm64coopdx/releases/download/v1.4.1/sm64coopdx_Linux.zip
-        sha256: c63fda5237bc9b377c13f9aa9773cb593d726b8cc8bd498fc46b2ba943540d36
-        strip-components: 0 # Keep directory structure intact
+      - type: git
+        url: https://github.com/coop-deluxe/sm64coopdx.git
+        # tag: v1.4.1 # Tags v1.4 and v1.4.1 are identical. How did they mess that up?!
+        branch: main
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/coop-deluxe/sm64coopdx/releases/latest
-          version-query: .tag_name
-          url-query: .assets[] | select(.name=="sm64coopdx_Linux.zip") | .browser_download_url
+          type: git
+          tag-pattern: ^v([\d.]+)$
   - name: sm64misc
     buildsystem: simple
     build-commands:
+      # Keep it dynamic for SteamOS build. It should only contain very minimal changes to make consistency easier
+      - cat app.desktop | sed -e s/flatpak_id/${FLATPAK_ID}/g -e s/flatpak_name/${FLATPAK_NAME}/g >> ${FLATPAK_ID}.desktop
+      - cat metainfo.xml | sed -e s/flatpak_id/${FLATPAK_ID}/g -e s/flatpak_name/${FLATPAK_NAME}/g >> ${FLATPAK_ID}.metainfo.xml
       - install -Dm644 ${FLATPAK_ID}.desktop -t /app/share/applications
       - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
       - install -Dm644 icon128.png /app/share/icons/hicolor/128x128/apps/${FLATPAK_ID}.png
